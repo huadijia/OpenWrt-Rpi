@@ -2,9 +2,10 @@ name: Delete Old Workflows
 
 on:
   workflow_dispatch:
-
-  schedule:
-    - cron: '0 0 * * *'
+  # schedule:
+  #   - cron: '0 0 * * *'
+  watch:
+    types: started
 
 jobs:
   Delete-Workflow-Archive:
@@ -15,4 +16,4 @@ jobs:
         uses: GitRML/delete-workflow-runs@main
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          retain_days: 7
+          retain_days: 30
